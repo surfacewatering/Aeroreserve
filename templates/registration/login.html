@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}login{% endblock title %}
+        <div class="rightnav v-class-resp">
+            <div class="login">
+                <img src="./static/icons/user-icon.svg" alt="">
+                <a href="/login">Log in</a>
+            </div>
+            <div class="login">
+                <img src="./static/icons/edit.svg" alt="">
+                <a href="/register">Register Now</a>
+            </div>
+        </div>
+{% block body %}
+    <section style="padding: 40px; text-decoration: none; color: black; font-family: 'Ubuntu', sans-serif;">
+        <h1>System Login</h1> <br>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button style="margin-top: 25px" class="btn-dark">Login</button>
+        </form>
+    </section>
+{% endblock body %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}about{% endblock title %}
+
+{% block nav %}
+    {% if user.is_authenticated %}
+        <div class="rightnav v-class-resp">
+            <div class="logout">
+                <img src="./static/icons/user-icon.svg" alt="">
+                <a href="/logout" style="color: white; text-decoration: none">Log Out</a>
+            </div>
+        </div>
+    {% else %}
+        <div class="rightnav v-class-resp">
+            <div class="login">
+                <img src="./static/icons/user-icon.svg" alt="">
+                <a href="/login">Log in</a>
+            </div>
+            <div class="login">
+                <img src="./static/icons/edit.svg" alt="">
+                <a href="/register">Register Now</a>
+            </div>
+        </div>
+    {% endif %}
+{% endblock nav %}
+
+{% block body %}
+    <section class="section" style="margin-top: 100px;">
+        <div class="paras">
+            <p class="sectiontag text-big">About us</p>
+            <p class="sectionsubtag text-small">Aeroreserve- your traveling mate is a user friendly website from where you can book flight to your favourite destinations! Our main aim is to help our users get the best service involving airline booking. After registering and logging in, click on "Book flight" to get started!</p>
+        </div>
+        <div class="thumbnail">
+            <img src="./static/images/logo.png" alt="ac" class="imgfluid" style="width: 400px;">
+        </div>
+    </section>
+    <section class="section secleft" style="margin-bottom: 100px;">
+        <div class="paras">
+            <p class="sectiontag text-big">Developers</p>
+            <p class="sectionsubtag text-small">This website is designed by Nikita Singh, Computer Science and Engineering student, Indian Institute of Technology (BHU) Varanasi and Archana Chaudhary, Computer Science and Engineering student, Indian Institute of Technology (BHU) Varanasi.</p>
+        </div>
+        <div class="thumbnail">
+            <img src="./static/images/logo.png" alt="ac" class="imgfluid" style="width: 400px;">
+        </div>
+    </section>
+{% endblock body %}

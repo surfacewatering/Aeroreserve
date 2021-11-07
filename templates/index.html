@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}Book Flight{% endblock title %}
+{% load static %}
+{% block body %}
+    <section name="searchit" style="margin: 60px; background-color: #00000029!important; box-shadow:inset 0 0 11px white; padding: 40px!important; border-top-left-radius: 4rem!important; border-bottom-right-radius: 4rem!important; border-radius: 0rem!important;">
+    <div>
+    <form method="POST" >
+    {% csrf_token %}
+    <div class="row" style="text-align: center">
+        <input class="form-control" name="from_field" list="datalistOptions" id="exampleDataList" placeholder="FROM" style="margin-left: auto; margin-right: auto; padding: 5px">
+        <datalist id="datalistOptions">
+            {% for f in cities %}
+                <option value={{ f }}>
+            {% endfor %}
+        </datalist>
+        <input class="form-control2" name="to" list="datalistOptions2" id="exampleDataList2" placeholder="TO" style="margin-left: auto; margin-right: auto; padding: 5px">
+        <datalist id="datalistOptions2">
+            {% for f in cities2 %}
+                <option value={{ f }}>
+            {% endfor %}
+        </datalist>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="{% static 'js/ajax.js' %}"></script>
+  <script>
+    $( function() {
+    $(".datepicker").datepicker();
+    } );
+    </script>
+    <div class="col form-group" style="display: inline; margin: auto">
+        <input name="datetravel" type="text" name="Date" class="form-control datepicker textbox-translucent" autocomplete="off" placeholder="Date" title="" id="id_Date" style="margin-left: auto; margin-right: auto; padding: 5px">
+    </div>
+    <div class="col-md text-center">
+      <button class="btn-dark" type="submit">Search</button>
+    </div>
+    </div>
+    </form>
+    </div>
+    </section>
+    {% if flights %}
+     {% if request.method == 'POST' %}
+        <h4 style="margin-left: 60px; margin-bottom: 20px"> {{ flights.count }} flights found.</h4>
+    {% else %}
+         <h4 style="margin-left: 60px; margin-bottom: 20px"> {{ flights.count }} flights available in total.</h4>
+    {% endif %}
+    {% for flights in flights %}
+    <div class="jumbotron jumbotron-translucent" style="margin: 60px; background-color: #00000029!important; box-shadow:inset 0 0 11px white; padding: 40px!important; border-top-left-radius: 4rem!important; border-bottom-right-radius: 4rem!important; border-radius: 0rem!important;">
+      <div class="row">
+        <div class="col">
+          <h1> &#x2708; {{ flights.airline_id }}</h1>
+          <h3>{{ flights.from_field }} &#10132; {{ flights.to }}</h3>
+          <h4>{{ flights.arrival_time }} -- {{ flights.departure_time }}</h4>
+        </div>
+        <div class="col" style="text-align: right">
+          <h1 style="font-size: 60px;"> &#x20b9 {{ flights.fare }}/-</h1>
+{#            {% if request.method == 'POST' %}#}
+{#            <a href="{% url 'plane_detail_book' pk=flights.flight_code_id %}">#}
+{#              <button class = "btn btn-primary button-translucent" type="submit">Book <i class="fas fa-arrow-circle-right"></i></button>#}
+{#            </a>#}
+{#            {% endif %}#}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% else %}
+  <h4 style="margin-left: 60px; margin-bottom: 20px">No flights found.</h4>
+    {% endif %}
+{% endblock body %}
+

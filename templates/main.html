@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}main{% endblock title %}
+
+{% block nav %}
+    {% if user.is_authenticated %}
+        <div class="rightnav v-class-resp">
+            <div class="logout">
+                <img src="./static/icons/user-icon.svg" alt="">
+                <a href="/logout" style="color: white; text-decoration: none">Log Out</a>
+            </div>
+        </div>
+    {% else %}
+        <div class="rightnav v-class-resp">
+            <div class="login">
+                <img src="./static/icons/user-icon.svg" alt="">
+                <a href="/login">Log in</a>
+            </div>
+            <div class="login">
+                <img src="./static/icons/edit.svg" alt="">
+                <a href="/register">Register Now</a>
+            </div>
+        </div>
+    {% endif %}
+{% endblock nav %}
+
+{% block body %}
+    {% if user.is_authenticated %}
+ <section class="background firstsection">
+        <div class="box-main">
+            <div class="firsthalf">
+                <p class="text-big" style="font-size: xxx-large; color: black; ">Welcome To Aeroreserve, {{ user.username }}!</p>
+            </div>
+
+            <div class="secondhalf">
+                <img src="./static/images/logo.png" alt="">
+            </div>
+        </div>
+    </section>
+    {% else %}
+         <section class="background firstsection">
+        <div class="box-main">
+            <div class="firsthalf">
+                <p class="text-big" style="font-size: xxx-large; color: black; ">Welcome To Aeroreserve!</p>
+            </div>
+
+            <div class="secondhalf">
+                <img src="./static/images/logo.png" alt="">
+            </div>
+        </div>
+    </section>
+    {% endif %}
+{% endblock body %}
+
