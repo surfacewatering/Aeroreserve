@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}register{% endblock title %}
+{% block nav %}
+    {% if user.is_authenticated %}
+        <div class="rightnav v-class-resp">
+            <div class="logout">
+                <a href="/ticketlist" style="font-size:18px; margin-right: 40px; color: white; text-decoration: none">Tickets Booked</a>
+            </div>
+            <div class="logout">
+                <img src="/static/icons/user-icon.svg" alt="">
+                <a href="{% url 'logout' %}" style="color: white; font-size:18px; text-decoration: none">Log Out</a>
+            </div>
+        </div>
+    {% else %}
+        <div class="rightnav v-class-resp">
+            <div class="login">
+                <img src="/static/icons/user-icon.svg" alt="">
+                <a href="{% url 'login' %}">Log in</a>
+            </div>
+            <div class="login">
+                <img src="/static/icons/edit.svg" alt="">
+                <a href="{% url 'register' %}">Register Now</a>
+            </div>
+        </div>
+    {% endif %}
+{% endblock nav %}
+{% block body %}
+    <section style="padding: 40px;">
+        <h1>Create New Account</h1> <br>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn-dark" style="margin-top: 25px">Register</button>
+        </form>
+    </section>
+{% endblock body %}

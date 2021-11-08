@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from aeroreserve import views
 
 admin.site.site_header = "Aeroreserve Admin"
 admin.site.site_title = "Aeroreserve Admin Portal"
@@ -22,5 +23,5 @@ admin.site.index_title = "Welcome to Aeroreserve Portal"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('aeroreserve.urls'))
+    path('',include('aeroreserve.urls')),
 ]

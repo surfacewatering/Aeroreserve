@@ -251,67 +251,6 @@ section.contact-us .map{
     flex:1;
 }
 
-/* section.footer{
-    background-color: var(--secondary);
-}
-.footer-heading{
-    color: var(--heaven);
-    font-family: "Raleway-bold";
-    position: relative;
-    margin-bottom: 2rem;
-    text-align: center;
-}
-.footer-heading:after{
-    content:'';
-    display: block;
-    width: 90%;
-    height: 10px;
-    border-bottom:2px solid var(--primary);
-    background-position: center;
-    /* position: absolute; */
-    /* bottom: -40; */
-/* }
-section.footer .container .about-us > div p{
-    color: var(--light);
-    font-family: "Raleway-regular";
-    line-height: 1rem;
-    margin-right: 0.25rem;
-}
-section.footer .container .about-us > div button{
-    background-color: var(--ternary);
-    color: var(--light);
-}
-section.footer .container .quick-links .links{
-    display: flex;
-    flex-direction: column;
-    color: var(--light);
-    /* justify-content: center; */
-    /* align-items: center;
-    margin-bottom: 2rem;
-}
-section.footer .container .follow-us .wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-section.footer .container .follow-us .wrapper .names{
-    display: flex;
-    color: var(--light);
-    margin-bottom: 0.5rem;
-}
-section.footer .container .follow-us .wrapper .names img{
-    margin-right: 0.5rem;
-
-}
-section.footer .container .insta .grid{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    
-    grid-template-rows: 1fr 1fr; */
-    /* margin: 2px; */
-/* } */
-
-
 .burger{
     display: none;
     position: absolute;

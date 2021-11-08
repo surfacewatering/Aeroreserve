@@ -1,6 +1,30 @@
 {% extends 'base.html' %}
 {% block title %}Book Flight{% endblock title %}
 {% load static %}
+{% block nav %}
+    {% if user.is_authenticated %}
+        <div class="rightnav v-class-resp">
+            <div class="logout">
+                <a href="/ticketlist" style="font-size:18px; margin-right: 40px; color: white; text-decoration: none">Tickets Booked</a>
+            </div>
+            <div class="logout">
+                <img src="./static/icons/user-icon.svg" alt="">
+                <a href="{% url 'logout' %}" style="color: white; font-size:18px; text-decoration: none">Log Out</a>
+            </div>
+        </div>
+    {% else %}
+        <div class="rightnav v-class-resp">
+            <div class="login">
+                <img src="./static/icons/user-icon.svg" alt="">
+                <a href="{% url 'login' %}">Log in</a>
+            </div>
+            <div class="login">
+                <img src="./static/icons/edit.svg" alt="">
+                <a href="{% url 'register' %}">Register Now</a>
+            </div>
+        </div>
+    {% endif %}
+{% endblock nav %}
 {% block body %}
     <section name="searchit" style="margin: 60px; background-color: #00000029!important; box-shadow:inset 0 0 11px white; padding: 40px!important; border-top-left-radius: 4rem!important; border-bottom-right-radius: 4rem!important; border-radius: 0rem!important;">
     <div>
@@ -29,7 +53,7 @@
     } );
     </script>
     <div class="col form-group" style="display: inline; margin: auto">
-        <input name="datetravel" type="text" name="Date" class="form-control datepicker textbox-translucent" autocomplete="off" placeholder="Date" title="" id="id_Date" style="margin-left: auto; margin-right: auto; padding: 5px">
+        <input name="Date" type="text" class="form-control datepicker textbox-translucent" autocomplete="off" placeholder="Date" title="" id="id_Date" style="margin-left: auto; margin-right: auto; padding: 5px">
     </div>
     <div class="col-md text-center">
       <button class="btn-dark" type="submit">Search</button>
@@ -54,11 +78,11 @@
         </div>
         <div class="col" style="text-align: right">
           <h1 style="font-size: 60px;"> &#x20b9 {{ flights.fare }}/-</h1>
-{#            {% if request.method == 'POST' %}#}
-{#            <a href="{% url 'plane_detail_book' pk=flights.flight_code_id %}">#}
-{#              <button class = "btn btn-primary button-translucent" type="submit">Book <i class="fas fa-arrow-circle-right"></i></button>#}
-{#            </a>#}
-{#            {% endif %}#}
+            {% if request.method == 'POST' %}
+            <a href="{% url 'plane_detail_book' pk=flights.airline_id %}">
+              <button class = "btn-dark" type="submit">Book</button>
+            </a>
+            {% endif %}
         </div>
       </div>
     </div>
