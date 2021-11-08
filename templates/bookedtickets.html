@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Booked Tickets{% endblock title %}
+        {% load static %}
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+{% block body %}
+<div class = 'jumbotron jumbotron-translucent' style="text-align: center; margin: 60px; background-color: #00000029!important; box-shadow:inset 0 0 11px white; padding: 40px!important; border-top-left-radius: 4rem!important; border-bottom-right-radius: 4rem!important; border-radius: 0rem!important;">
+  <div class="row">
+    <div class="col">
+      <h2>PNR: {{ ticket.PNR }}</h2>
+    </div>
+    <div class ="col">
+      <h1>{{ ticket.fk_flights.from_field }}-- {{ ticket.fk_flights.departure_time }}</h1>
+      <h1>{{ ticket.fk_flights.to }} -- {{ ticket.fk_flights.arrival_time }}</h1>
+    </div>
+  </div>
+  <br>
+  <div>
+    <h2>Passengers:</h2>
+    <hr>
+    <table style="width: 100%" class="textbox-translucent">
+      <tr>
+        <th><h2>Name</h2></th>
+        <th><h2>Age</h2></th>
+        <th><h2>Gender</h2></th>
+      </tr>
+      {% if passenger %}
+        {% for pass in passenger %}
+          <tr>
+            <td><h4>{{ pass.SSN.passenger_firstname }} {{ pass.SSN.passenger_lastname}}</h4></td>
+            <td><h4>{{ pass.SSN.passenger_dob }}</h4></td>
+            <td><h4>{{ pass.SSN.passenger_gender }}</h4></td>
+          </tr>
+        {% endfor %}
+      {% endif %}
+    </table>
+  </div>
+  <br>
+  <div align="right">
+    <h1>Price: &#x20b9; {{ t_price }}/-</h1>
+  </div>
+</div>
+{% endblock body %}
+
+

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Book Flights{% endblock title %}
+{% block body %}
+    <div class="jumbotron jumbotron-translucent" style="text-align: center; margin: 60px; background-color: #00000029!important; box-shadow:inset 0 0 11px white; padding: 40px!important; border-top-left-radius: 4rem!important; border-bottom-right-radius: 4rem!important; border-radius: 0rem!important;">
+        <h1>You have selected flight:</h1><br>
+        <h1>{{ flight }}</h1><br>
+    <form action="{% url 'plane_detail_book' pk=flight %}"method="post">
+        {% csrf_token %}
+        <div class="col form-group">
+            <input type="text" name="number_of_passengers" class="form-control textbox-translucent" style="width: 300px; margin: auto" autocomplete="off" required placeholder="Number of passengers">
+        </div>
+        <button class = "btn-dark" type="submit">Proceed</button>
+    </form>
+    </div>
+{% endblock body %}

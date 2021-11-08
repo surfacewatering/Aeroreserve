@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Tickets{% endblock title %}
+{% load static %}
+{% block body %}
+    <div class="jumbotron jumbotron-translucent" style="text-align: center; margin: 60px; background-color: #00000029!important; box-shadow:inset 0 0 11px white; padding: 40px!important; border-top-left-radius: 4rem!important; border-bottom-right-radius: 4rem!important; border-radius: 0rem!important;">
+  <h1>Tickets Booked</h1>
+  <hr>
+</div>
+{% if tickets %}
+  {% for tickets in tickets %}
+    <div class="jumbotron jumbotron-translucent" style="text-align: center; margin: 60px; background-color: #00000029!important; box-shadow:inset 0 0 11px white; padding: 40px!important; border-top-left-radius: 4rem!important; border-bottom-right-radius: 4rem!important; border-radius: 0rem!important;">
+      <div class="row">
+        <div class="col">
+          <h3>PNR: {{ tickets.PNR }}</h3>
+          <h4>{{ tickets.fk_flights.from_field }}  &#187; {{ tickets.fk_flights.to }}</h4>
+        </div>
+        <div class="col">
+          <a href="{% url 'bookedtickets' pk=tickets.PNR %}"><button class = "btn-dark" type="submit">SHOW</button></a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% else %}
+  <h1 style="color: #efefef;">NO TICKETS</h1>
+{% endif %}
+{% endblock body %}
