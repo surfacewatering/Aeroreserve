@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect, reverse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from aeroreserve.models import Airlines, PassengerDetails, BookingDetails, Destination, FlightCosts, Passenger, Ticket, PassengerTicketRel
+from aeroreserve.models import Airlines, PassengerDetails, BookingDetails, Passenger, Ticket, PassengerTicketRel
 from django.urls import reverse
 from aeroreserve.forms import PassengerForm
 from django.forms import formset_factory

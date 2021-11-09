@@ -1,36 +1,33 @@
 {% extends 'base.html' %}
 {% block title %}Payment{% endblock title %}
 {% block body %}
-<div class="jumbotron jumbotron-translucent" style="margin: 100px 300px; color: black">
+<div class="jumbotron jumbotron-translucent" style="margin: 60px; background-color: rgba(216,236,253,0.85)!important; box-shadow:inset 0 0 11px cornflowerblue; padding: 40px!important; border-top-left-radius: 4rem!important; border-bottom-right-radius: 4rem!important; border-radius: 0rem!important;">
   <h1>Payment</h1>
-  <hr>
-  <div align="center" style="color: white;">
-  Enter your card information as asked below to proceed further.
+  <br>
+  <div style="color: cornflowerblue;">
+  Enter your card information:
   </div>
   <br>
-  <form method="post" action="{% url 'payments_page' %}">
+  <form method="post" action="{% url 'payments_page' %}" style="text-align: center;">
     {% csrf_token %}
     <div class='form-group required'>
       <label class='control-label'>Name on Card</label>
       <input class='form-control textbox-translucent' size='40' type='text'>
-    </div>
+    </div><br>
     <div class='form-group required'>
-      <label class='control-label'>Card Number</label>
+      <label class='control-label'>Card Number: </label>
       <input class='form-control textbox-translucent' size='40' type='text'>
-    </div>
+    </div><br>
     <div class='row' style="margin: auto">
       <div class='col form-group cvc required'>
-        <label class='control-label'>CVC</label>
+        <label class='control-label'>CVC: </label>
         <input autocomplete='off' class='form-control card-cvc textbox-translucent' placeholder='ex. 311' size='6' type='text'>
-      </div>
+      </div><br>
       <div class='col form-group expiration required'>
-        <label class='control-label'>Expiration</label>
+        <label class='control-label'>Expiration: </label>
         <input class='form-control card-expiry-month textbox-translucent' placeholder='MM' size='6' type='text'>
-      </div>
-      <div class='col form-group expiration required'>
-        <label class='control-label'> </label>
         <input class='form-control card-expiry-year textbox-translucent' placeholder='YYYY' size='7' type='text'>
-      </div>
+      </div><br>
     </div>
     <br>
     <div class="row">

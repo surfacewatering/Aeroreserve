@@ -26,7 +26,7 @@
     {% endif %}
 {% endblock nav %}
 {% block body %}
-    <section name="searchit" style="margin: 60px; background-color: #00000029!important; box-shadow:inset 0 0 11px white; padding: 40px!important; border-top-left-radius: 4rem!important; border-bottom-right-radius: 4rem!important; border-radius: 0rem!important;">
+    <section name="searchit" style="margin: 60px; background-color: rgba(216,236,253,0.85)!important; box-shadow:inset 0 0 11px cornflowerblue; padding: 40px!important; border-top-left-radius: 4rem!important; border-bottom-right-radius: 4rem!important; border-radius: 0rem!important;">
     <div>
     <form method="POST" >
     {% csrf_token %}
@@ -66,7 +66,7 @@
          <h4 style="margin-left: 60px; margin-bottom: 20px"> {{ flights.count }} flights available in total.</h4>
     {% endif %}
     {% for flights in flights %}
-    <div class="jumbotron jumbotron-translucent" style="margin: 60px; background-color: #00000029!important; box-shadow:inset 0 0 11px white; padding: 40px!important; border-top-left-radius: 4rem!important; border-bottom-right-radius: 4rem!important; border-radius: 0rem!important;">
+    <div class="jumbotron jumbotron-translucent" style="margin: 60px; background-color: rgba(216,236,253,0.85)!important; box-shadow:inset 0 0 11px cornflowerblue; padding: 40px!important; border-top-left-radius: 4rem!important; border-bottom-right-radius: 4rem!important; border-radius: 0rem!important;">
       <div class="row">
         <div class="col">
           <h1> &#x2708; {{ flights.airline_id }}</h1>
