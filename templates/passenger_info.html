@@ -15,9 +15,9 @@
 {% block body %}
 <div style="margin: 80px 100px;">
   <div class="jumbotron jumbotron-translucent" style="text-align: center; margin: 60px; background-color: #00000029!important; box-shadow:inset 0 0 11px white; padding: 40px!important; border-top-left-radius: 4rem!important; border-bottom-right-radius: 4rem!important; border-radius: 0rem!important;">
-    <h1 align="center">Passenger Details</h1>
+    <h1>Passenger Details</h1>
     <hr>
-    <div align="center" style="color: white;">
+    <div style="color: white;">
     Please fill the details of the passengers
     </div>
   </div>
@@ -27,7 +27,7 @@
     <table>
       {% for pl in passenger_details %}
       <div class="jumbotron jumbotron-translucent" style="text-align: center; margin: 60px; background-color: #00000029!important; box-shadow:inset 0 0 11px white; padding: 40px!important; border-top-left-radius: 4rem!important; border-bottom-right-radius: 4rem!important; border-radius: 0rem!important;">
-        <h3 align="center">Passenger {{ forloop.counter }}</h3>
+        <h3>Passenger {{ forloop.counter }}</h3>
         <br>
         {% for message in pl.non_field_errors %}
           <div class="alert alert-danger">

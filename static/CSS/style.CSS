@@ -5,7 +5,8 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Sora', sans-serif;
+    color: rgb(0, 48, 134);
 }
 
 .logo{
@@ -32,7 +33,6 @@
 .nav-list{
     display: flex;
     width: 70%;
-    /* background-color:black; */
     justify-content: center;
     align-items: center;
     
@@ -44,8 +44,8 @@
 .nav-list li a{
     text-decoration: none;
     color: white;
-    font-family: 'Ubuntu', sans-serif;
 }
+
 .nav-list li a:hover{
     text-decoration: none;
     color: gray;
@@ -59,6 +59,7 @@
     text-decoration: none;
 
 }
+
 .rightnav .login{
     padding: 7px;
     margin: 0px 5px;
@@ -88,7 +89,7 @@
     justify-content: center;
     align-items: center;
     color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
     max-width: 60%;
     margin: auto;
     height: 75%;
@@ -128,7 +129,7 @@
     background: none;
     cursor: pointer;
     color: white;
-    font-family: 'Ubuntu', sans-serif;
+    /*font-family: 'Ubuntu', sans-serif;*/
 }
 
 .btn-dark{
@@ -140,7 +141,7 @@
     font-size: 16px;
     background: none;
     cursor: pointer;
-    font-family: 'Ubuntu', sans-serif;
+    /*font-family: 'Ubuntu', sans-serif;*/
 }
 .section{
     height: 300px;
@@ -149,7 +150,7 @@
     justify-content: space-evenly;
     max-width: 80%;
     margin: auto;
-    font-family: 'Ubuntu', sans-serif;
+    /*font-family: 'Ubuntu', sans-serif;*/
 }
 .secleft{
     flex-direction: row-reverse;
@@ -158,7 +159,7 @@
     padding: 16px 0px;
 }
 .sectionsubtag{
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+    /*font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;*/
 }
 .paras{
     /* display: flex; */
@@ -173,7 +174,7 @@
     font-size: 35px;
     text-align: center;
     padding-top: 30px;
-    font-family:'Ubuntu', sans-serif;
+    /*font-family:'Ubuntu', sans-serif;*/
 }
 .form{
     max-width: 600px;
@@ -187,13 +188,13 @@
     font-size: 19px;
     border: 2px solid gray;
     border-radius: 7px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
 }
 
 .text-footer{
     /* font-size: 15px; */
     text-align: center;
-    font-family:'Ubuntu', sans-serif;
+    /*font-family:'Ubuntu', sans-serif;*/
     display: flex;
     justify-content: center;
     padding: 30px 0px;
@@ -211,7 +212,7 @@ section.contact-us .contact-info-wrapper{
     flex: 1;
 }
 .section-heading{
-    font-family: "Raleway-bold";
+    /*font-family: "Raleway-bold";*/
     text-align: center;
     position: relative;
     margin-bottom: 6rem;
@@ -244,7 +245,7 @@ section.contact-us .contact-info >div >div >div{
     flex-direction: column;
 }
 section.contact-us .contact-info >div >div >div span:first-child{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
     margin-bottom: 0.25rem;
 }
 section.contact-us .map{

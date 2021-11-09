@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 {% load static %}
 <head>
     <meta charset="UTF-8">
@@ -23,8 +29,10 @@
         {% block nav %}
         {% endblock nav %}
     </nav>
+    <body class="mid">
     {% block body %}
     {% endblock body %}
+    </body>
     <footer class="background">
         <p class="text-footer">
         copyright &copy; 2021 Aeroreserve.com - All rights reserved

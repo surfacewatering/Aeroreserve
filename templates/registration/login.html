@@ -13,12 +13,35 @@
         </div>
 {% endblock nav %}
 {% block body %}
-    <section style="padding: 40px; text-decoration: none; color: black; font-family: 'Ubuntu', sans-serif;">
-        <h1>System Login</h1> <br>
-        <form method="POST">
+    <section style="padding: 30px; text-decoration: none;">
+        <h1>System Login</h1>
+        <form method="POST" style="padding: 15px; width:0px; font-size: 25px;">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button style="margin-top: 25px" class="btn-dark">Login</button>
+            {{ form.as_p }} <br>
+            <button class="btn-dark" type="submit">Login</button>
         </form>
     </section>
 {% endblock body %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

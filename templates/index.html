@@ -31,7 +31,7 @@
     <form method="POST" >
     {% csrf_token %}
     <div class="row" style="text-align: center">
-        <input class="form-control" name="from_field" list="datalistOptions" id="exampleDataList" placeholder="FROM" style="margin-left: auto; margin-right: auto; padding: 5px">
+        <input class="form-control" name="from_field" list="datalistOptions" id="exampleDataList" placeholder="FROM" style="margin-left: auto; margin-right: 100px; padding: 5px">
         <datalist id="datalistOptions">
             {% for f in cities %}
                 <option value={{ f }}>
@@ -43,9 +43,6 @@
                 <option value={{ f }}>
             {% endfor %}
         </datalist>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="{% static 'js/ajax.js' %}"></script>
   <script>
     $( function() {
@@ -53,7 +50,7 @@
     } );
     </script>
     <div class="col form-group" style="display: inline; margin: auto">
-        <input name="Date" type="text" class="form-control datepicker textbox-translucent" autocomplete="off" placeholder="Date" title="" id="id_Date" style="margin-left: auto; margin-right: auto; padding: 5px">
+        <input name="Date" type="text" class="form-control datepicker textbox-translucent" autocomplete="off" placeholder="Date" title="" id="id_Date" style="margin-left: 100px; margin-right: auto; padding: 5px">
     </div>
     <div class="col-md text-center">
       <button class="btn-dark" type="submit">Search</button>
