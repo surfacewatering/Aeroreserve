@@ -34,7 +34,7 @@ def about(request):
 def contact(request):
     return render(request, 'contact.html')
 
-@login_required()
+@login_required
 def index(request):
     cities = Airlines.objects.values_list('from_field', flat=True)
     cities2 = Airlines.objects.values_list('to', flat=True)

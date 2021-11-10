@@ -28,13 +28,10 @@
 {% block body %}
     <section style="padding: 40px; font-size: 20px;">
         <h1>Create New Account</h1> <br>
-        <form method="POST"">
+        <form method="POST">
         {% csrf_token %}
-            <input type="hidden" name="csrfmiddlewaretoken" value="DRKfSlbkmbwsaiWnAdQ1xgp7Dj50KMo1chFbVTrIAQQO8Wzz3NUmqkoOD5jnlTGm">
-            <p><label for="id_username">Username:</label><br> <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username"> <span class="helptext"><br>Requires 150 or fewer characters. Letters, digits and @/./+/-/_ only.</span></p><br><br>
-            <p><label for="id_password1">Password:</label><br> <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1"> <span class="helptext"></span></p><ul><li>Your password can’t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can’t be a commonly used password.</li><li>Your password can’t be entirely numeric.</li></ul><p></p><br><br>
-            <p><label for="id_password2">Password confirmation:</label><br> <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2"> <span class="helptext"><br>Enter the same password as before, for verification.</span></p><br>
-            <button class="btn-dark" style="margin-top: 25px">Register</button>
+            {{ form.as_p }}
+            <button class="btn-dark" type="submit">Register</button>
         </form>
     </section>
 {% endblock body %}

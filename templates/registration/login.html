@@ -13,9 +13,9 @@
         </div>
 {% endblock nav %}
 {% block body %}
-    <section style="padding: 30px; text-decoration: none;">
+    <section style="padding: 30px; text-decoration: none; font-size: 30px;">
         <h1>System Login</h1>
-        <form method="POST" style="padding: 15px; width:0px; font-size: 25px;">
+        <form method="POST">
             {% csrf_token %}
             {{ form.as_p }} <br>
             <button class="btn-dark" type="submit">Login</button>
