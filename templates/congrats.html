@@ -16,5 +16,6 @@
 <div class = 'jumbotron jumbotron-translucent' style="margin: 100px 50px;" align="center">
   <h1 style="font-size: 70px;">Congratulations!</h1>
     <h1 style="font-size: 40px;">Your ticket is booked</h1>
+    <a href={% url 'bookedtickets' ticket.PNR %}><button class="btn-dark">View booked ticket</button></a>
 </div>
 {% endblock %}
