@@ -1,6 +1,5 @@
 from django import forms
-from aeroreserve.models import Passenger, Ticket
-from django.contrib.auth.models import User
+from aeroreserve.models import Passenger
 
 GENDER_CHOICES = (
     ('male', 'MALE'),
@@ -21,5 +20,5 @@ class PassengerForm(forms.ModelForm):
             'passenger_lastname',
             'passenger_dob',
             'passenger_gender',
-            'SSN',
+            'SSN'
         )

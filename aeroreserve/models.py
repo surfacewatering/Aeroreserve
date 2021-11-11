@@ -28,59 +28,6 @@ class Airlines(models.Model):
         unique_together = (('airline_id', 'airline_name'),)
 
 
-class BookingDetails(models.Model):
-    booking_id = models.IntegerField(primary_key=True)
-    first_name = models.CharField(max_length=45, blank=True, null=True)
-    last_name = models.CharField(max_length=45, blank=True, null=True)
-    booked_seat = models.IntegerField(blank=True, null=True)
-    type = models.CharField(max_length=45, blank=True, null=True)
-    flight = models.CharField(max_length=45, blank=True, null=True)
-    fare = models.IntegerField(blank=True, null=True)
-    journey_date = models.DateField(db_column='journey_dATE', blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'BOOKING_DETAILS'
-
-
-class Destination(models.Model):
-    from_field = models.CharField(db_column='from', primary_key=True, max_length=45)  # Field renamed because it was a Python reserved word.
-    to = models.CharField(max_length=45, blank=True, null=True)
-    arrival_time = models.TimeField()
-    departure_time = models.TimeField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'DESTINATION'
-        unique_together = (('from_field', 'arrival_time'),)
-
-
-class FlightCosts(models.Model):
-    airline = models.OneToOneField(Airlines, models.DO_NOTHING, primary_key=True)
-    fare = models.IntegerField()
-    type = models.CharField(max_length=45, blank=True, null=True)
-    airline_name = models.CharField(max_length=45, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'FLIGHT_COSTS'
-        unique_together = (('airline', 'fare'),)
-
-
-class PassengerDetails(models.Model):
-    passenger_id = models.IntegerField(blank=True, null=True)
-    first_name = models.CharField(max_length=45, blank=True, null=True)
-    last_name = models.CharField(max_length=45, blank=True, null=True)
-    gender = models.CharField(max_length=45, blank=True, null=True)
-    seat_number = models.IntegerField(blank=True, null=True)
-    age = models.IntegerField(blank=True, null=True)
-    mobile_number = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'PASSENGER_DETAILS'
-
-
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
 
@@ -88,6 +35,35 @@ class AuthGroup(models.Model):
         managed = False
         db_table = 'auth_group'
 
+
+class Passenger(models.Model):
+    GENDER_CHOICES = (
+        ('male', 'MALE'),
+        ('female', 'FEMALE'),
+        ('other', 'OTHER'),
+    )
+    SSN = models.CharField(max_length=12, primary_key=True)
+    passenger_firstname = models.CharField(max_length = 100)
+    passenger_lastname = models.CharField(max_length = 100)
+    passenger_dob = models.DateField()
+    passenger_gender = models.CharField(max_length=6, choices=GENDER_CHOICES, default='female')
+    def get_absolute_url(self):
+        return reverse("passenger_info", kwargs={'pk': self.pk})
+
+class Ticket(models.Model):
+    JDate = models.DateField(blank=True, null=True)
+    PNR = models.PositiveIntegerField(primary_key=True)
+    username = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    Date_of_booking = models.DateField()
+    fk_flights = models.ForeignKey(Airlines, on_delete=models.CASCADE)
+    def get_absolute_url(self):
+        return reverse("bookedtickets",kwargs={'pk': self.PNR})
+
+class PassengerTicketRel(models.Model):
+    PNR = models.ForeignKey(Ticket, on_delete=models.CASCADE)
+    SSN = models.ForeignKey(Passenger, on_delete=models.CASCADE)
+    class Meta:
+        unique_together = (('PNR', 'SSN'),)
 
 class AuthGroupPermissions(models.Model):
     id = models.BigAutoField(primary_key=True)
@@ -193,32 +169,3 @@ class DjangoSession(models.Model):
     class Meta:
         managed = False
         db_table = 'django_session'
-
-class Passenger(models.Model):
-    GENDER_CHOICES = (
-        ('male', 'MALE'),
-        ('female', 'FEMALE'),
-        ('other', 'OTHER'),
-    )
-    SSN = models.CharField(max_length=12, primary_key=True)
-    passenger_firstname = models.CharField(max_length = 100)
-    passenger_lastname = models.CharField(max_length = 100)
-    passenger_dob = models.DateField()
-    passenger_gender = models.CharField(max_length=6, choices=GENDER_CHOICES, default='female')
-    def get_absolute_url(self):
-        return reverse("passenger_info", kwargs={'pk': self.pk})
-
-class Ticket(models.Model):
-    JDate = models.DateField(blank=True, null=True)
-    PNR = models.PositiveIntegerField(primary_key=True)
-    username = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-    Date_of_booking = models.DateField()
-    fk_flights = models.ForeignKey(Airlines, on_delete=models.CASCADE)
-    def get_absolute_url(self):
-        return reverse("bookedtickets",kwargs={'pk': self.PNR})
-
-class PassengerTicketRel(models.Model):
-    PNR = models.ForeignKey(Ticket, on_delete=models.CASCADE)
-    SSN = models.ForeignKey(Passenger, on_delete=models.CASCADE)
-    class Meta:
-        unique_together = (('PNR', 'SSN'),)

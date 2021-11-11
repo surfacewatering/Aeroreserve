@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect, HttpResponseRedirect, reverse
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from aeroreserve.models import Airlines, PassengerDetails, BookingDetails, Passenger, Ticket, PassengerTicketRel
+from aeroreserve.models import Airlines, Passenger, Ticket, PassengerTicketRel
 from django.urls import reverse
 from aeroreserve.forms import PassengerForm
 from django.forms import formset_factory
@@ -55,7 +55,7 @@ def index(request):
 def plane_detail_book(request, pk):
     request.session['F_No'] = pk
     if request.method == "POST":
-        request.session['N'] = int(request.POST.get("number_of_passengers"))
+        request.session['N'] = int(request.POST.get("passengers"))
         return HttpResponseRedirect(reverse('passenger_info'))
     else:
         print("ERROR")
@@ -63,7 +63,7 @@ def plane_detail_book(request, pk):
 
 @login_required
 def passenger_info(request):
-    PassengerFormSet= formset_factory(PassengerForm, extra=request.session.get('N'))
+    PassengerFormSet = formset_factory(PassengerForm, extra=request.session.get('N'))
     if request.method == "POST":
         passenger_details = PassengerFormSet(request.POST)
         if passenger_details.is_valid():
@@ -107,9 +107,9 @@ def payments_page(request):
         key = makePNR()
         while t.filter(PNR=key).exists():
             key = makePNR()
-        T= Ticket(PNR=key, username=request.user, Date_of_booking=datetime.date.today(), fk_flights=final2)
+        T = Ticket(PNR=key, username=request.user, Date_of_booking=datetime.date.today(), fk_flights=final2)
         T.save()
-        for k in range(0, len(p_ssn)):
+        for k in range(0, N):
             p = Passenger(
                 SSN=p_ssn[k],
                 passenger_firstname=p_fname[k],
@@ -120,10 +120,9 @@ def payments_page(request):
             p.save()
             p_rel = PassengerTicketRel(PNR=T, SSN=p)
             p_rel.save()
-            R = request.session.keys()
         request.session['key'] = key
         return HttpResponseRedirect(reverse('congrats'))
-    return render(request ,'payments_page.html', {'price':t_price})
+    return render(request, 'payments_page.html', {'price': t_price})
 
 @login_required
 def congrats(request):
@@ -154,7 +153,7 @@ def ticketlist(request):
 def makePNR():
     PNR = ''
     while len(PNR) < 8:
-        n = random.randint(0,9)
+        n = random.randint(0, 9)
         PNR = PNR + str(n)
     k = int(PNR)
     return k

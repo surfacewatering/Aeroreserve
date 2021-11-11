@@ -8,7 +8,7 @@
     <form action="{% url 'plane_detail_book' pk=flight %}"method="post">
         {% csrf_token %}
         <div class="col form-group">
-            <input type="text" name="number_of_passengers" class="form-control textbox-translucent" style="width: 300px; margin: auto" autocomplete="off" required placeholder="Number of passengers">
+            <input type="text" name="passengers" class="form-control textbox-translucent" style="width: 300px; margin: auto" autocomplete="off" required placeholder="Number of passengers">
         </div><br>
         <button class = "btn-dark" type="submit">Next</button>
     </form>
