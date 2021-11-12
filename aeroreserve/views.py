@@ -13,7 +13,7 @@ def main(request):
     return render(request, 'main.html')
 
 def login(request):
-    return render(request, 'login.html')
+    return render(request, 'registration/login.html')
 
 def logout(request):
     return render(request, 'main.html')
@@ -110,13 +110,8 @@ def payments_page(request):
         T = Ticket(PNR=key, username=request.user, Date_of_booking=datetime.date.today(), fk_flights=final2)
         T.save()
         for k in range(0, N):
-            p = Passenger(
-                SSN=p_ssn[k],
-                passenger_firstname=p_fname[k],
-                passenger_lastname=p_lname[k],
-                passenger_gender=p_sex[k].lower(),
-                passenger_dob=datetime.datetime.strptime(p_dob[k], "%m/%d/%Y")
-            )
+            p = Passenger(SSN=p_ssn[k], passenger_firstname=p_fname[k], passenger_lastname=p_lname[k],
+            passenger_gender=p_sex[k].lower(), passenger_dob=datetime.datetime.strptime(p_dob[k], "%m/%d/%Y"))
             p.save()
             p_rel = PassengerTicketRel(PNR=T, SSN=p)
             p_rel.save()

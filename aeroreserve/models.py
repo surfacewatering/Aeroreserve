@@ -28,14 +28,6 @@ class Airlines(models.Model):
         unique_together = (('airline_id', 'airline_name'),)
 
 
-class AuthGroup(models.Model):
-    name = models.CharField(unique=True, max_length=150)
-
-    class Meta:
-        managed = False
-        db_table = 'auth_group'
-
-
 class Passenger(models.Model):
     GENDER_CHOICES = (
         ('male', 'MALE'),
@@ -57,13 +49,20 @@ class Ticket(models.Model):
     Date_of_booking = models.DateField()
     fk_flights = models.ForeignKey(Airlines, on_delete=models.CASCADE)
     def get_absolute_url(self):
-        return reverse("bookedtickets",kwargs={'pk': self.PNR})
+        return reverse("bookedtickets", kwargs={'pk': self.PNR})
 
 class PassengerTicketRel(models.Model):
     PNR = models.ForeignKey(Ticket, on_delete=models.CASCADE)
     SSN = models.ForeignKey(Passenger, on_delete=models.CASCADE)
     class Meta:
         unique_together = (('PNR', 'SSN'),)
+
+class AuthGroup(models.Model):
+    name = models.CharField(unique=True, max_length=150)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_group'
 
 class AuthGroupPermissions(models.Model):
     id = models.BigAutoField(primary_key=True)
