@@ -41,7 +41,8 @@ def index(request):
     if request.method == "POST":
         l1 = request.POST.get("from_field")
         l2 = request.POST.get("to")
-        flights = Airlines.objects.filter(from_field=l1, to=l2)
+        l3 = request.POST.get("Date")
+        flights = Airlines.objects.filter(from_field=l1, to=l2, datetravel=l3)
     else:
         flights = Airlines.objects.all()
     context = {

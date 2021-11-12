@@ -46,7 +46,9 @@
 <script src="{% static 'js/ajax.js' %}"></script>
   <script>
     $( function() {
-    $(".datepicker").datepicker();
+    $(".datepicker").datepicker({
+        dateFormat: 'yy-mm-dd'
+    });
     } );
     </script>
     <div class="col form-group" style="display: inline; margin: auto">
