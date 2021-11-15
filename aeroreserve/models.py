@@ -21,6 +21,7 @@ class Airlines(models.Model):
     distance = models.IntegerField(blank=True, null=True)
     datetravel = models.DateField(blank=True, null=True)
     fare = models.IntegerField(blank=True, null=True)
+    seats = models.IntegerField(blank=True, null=True)
 
     class Meta:
         managed = False

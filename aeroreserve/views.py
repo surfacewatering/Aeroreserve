@@ -42,9 +42,9 @@ def index(request):
         l1 = request.POST.get("from_field")
         l2 = request.POST.get("to")
         l3 = request.POST.get("Date")
-        flights = Airlines.objects.filter(from_field=l1, to=l2, datetravel=l3)
+        flights = Airlines.objects.filter(from_field=l1, to=l2, datetravel=l3, seats__gt=0)
     else:
-        flights = Airlines.objects.all()
+        flights = Airlines.objects.filter(seats__gt=0)
     context = {
         'cities': cities,
         'cities2': cities2,
@@ -53,14 +53,18 @@ def index(request):
     return render(request, 'index.html', context)
 
 @login_required
-def plane_detail_book(request, pk):
+def plane_detail_book(request, pk, seats):
     request.session['F_No'] = pk
     if request.method == "POST":
         request.session['N'] = int(request.POST.get("passengers"))
+        lol = seats - int(request.POST.get("passengers"))
+        pas = Airlines.objects.get(airline_id=pk)
+        pas.seats=lol
+        pas.save()
         return HttpResponseRedirect(reverse('passenger_info'))
     else:
         print("ERROR")
-    return render(request, 'flightdetail.html', {'flight': pk})
+    return render(request, 'flightdetail.html', {'flight': pk, 'seats': seats})
 
 @login_required
 def passenger_info(request):

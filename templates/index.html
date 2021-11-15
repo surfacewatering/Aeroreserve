@@ -73,12 +73,13 @@
         <div class="col">
           <h1> &#x2708; {{ flights.airline_id }}</h1>
           <h3>{{ flights.from_field }} &#10132; {{ flights.to }}</h3>
-          <h4>{{ flights.arrival_time }} -- {{ flights.departure_time }}</h4>
+          <h4>{{ flights.arrival_time }} -- {{ flights.departure_time }}</h4><br>
+            <h5>{{ flights.seats }} seats available</h5>
         </div>
         <div class="col" style="text-align: right">
           <h1 style="font-size: 60px;"> &#x20b9 {{ flights.fare }}/-</h1>
             {% if request.method == 'POST' %}
-            <a href="{% url 'plane_detail_book' pk=flights.airline_id %}">
+            <a href="{% url 'plane_detail_book' pk=flights.airline_id seats=flights.seats %}">
               <button class = "btn-dark" type="submit">Book</button>
             </a>
             {% endif %}
