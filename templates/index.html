@@ -3,7 +3,7 @@
 {% load static %}
 {% block nav %}
     {% if user.is_authenticated %}
-        <div class="rightnav v-class-resp">
+        <div class="rightnav v-class-resp" style="text-align: revert;">
             <div class="logout">
                 <a href="/ticketlist" style="font-size:18px; margin-right: 40px; color: white; text-decoration: none">Tickets Booked</a>
             </div>
@@ -79,7 +79,7 @@
         <div class="col" style="text-align: right">
           <h1 style="font-size: 60px;"> &#x20b9 {{ flights.fare }}/-</h1>
             {% if request.method == 'POST' %}
-            <a href="{% url 'plane_detail_book' pk=flights.airline_id seats=flights.seats %}">
+            <a href="{% url 'plane_detail_book' pk=flights.airline_id %}">
               <button class = "btn-dark" type="submit">Book</button>
             </a>
             {% endif %}

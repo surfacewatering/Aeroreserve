@@ -52,14 +52,17 @@ def index(request):
     }
     return render(request, 'index.html', context)
 
+
 @login_required
-def plane_detail_book(request, pk, seats):
+def plane_detail_book(request, pk):
+    j = Airlines.objects.get(airline_id=pk)
+    seats = j.seats
     request.session['F_No'] = pk
     if request.method == "POST":
         request.session['N'] = int(request.POST.get("passengers"))
         lol = seats - int(request.POST.get("passengers"))
         pas = Airlines.objects.get(airline_id=pk)
-        pas.seats=lol
+        pas.seats = lol
         pas.save()
         return HttpResponseRedirect(reverse('passenger_info'))
     else:

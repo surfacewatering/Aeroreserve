@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 from django.contrib.messages import constants as messages
 
@@ -31,6 +32,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
+    'chat',
     'aeroreserve.apps.AeroreserveConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -81,7 +84,7 @@ DATABASES = {
         'USER': 'root',
         'HOST': 'localhost',
         'PORT':  '3306',
-        'PASSWORD': 'Nikita10602#',
+        'PASSWORD': 'Nikita10602#'
     }
 }
 
@@ -136,3 +139,13 @@ STATICFILES_DIRS = [
     '/var/www/static/',
 ]
 LOGIN_REDIRECT_URL = '/'
+
+ASGI_APPLICATION = 'djangoProject.asgi.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
