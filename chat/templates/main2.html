@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block title %}Chat{% endblock title %}
+{% block nav %}{% endblock nav %}
+{% block body %}
+    <section class="val" style="margin: 20px; padding: 30px; text-align: center;">
+        <input id="room-name-input" type="text" size="70" style="height: 30px" placeholder="Enter chat room name"><br><br>
+        <input id="username-input" type="text" size="70" style="height: 30px" placeholder="Enter username"><br><br>
+        <input id="room-name-submit" type="button" class="btn-dark" value="Enter">
+    <script>
+        document.querySelector('#room-name-input, #username-input').focus();
+        document.querySelector('#room-name-input, #username-input').onkeyup = function(e) {
+            if (e.keyCode === 13) {  // enter, return
+                document.querySelector('#room-name-submit').click();
+            }
+        };
+
+        document.querySelector('#room-name-submit').onclick = function(e) {
+            var roomName = document.querySelector('#room-name-input').value;
+            var userName = document.querySelector('#username-input').value;
+            window.location.replace(roomName + '/?username=' + userName);
+        };
+    </script>
+    </section>
+{% endblock body %}
